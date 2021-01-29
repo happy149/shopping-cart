@@ -25,9 +25,9 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button onclick="handelPhoneChange (false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <button onclick="handelProductChange ('phone', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
                            <input id="phone-count" type="text" class="form-control text-center" value="1">
-                           <button onclick="handelPhoneChange (true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="handelProductChange ('phone', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
                         <h5 id="phone-total">$1219</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
@@ -43,9 +43,9 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button onclick="handelProductChange (false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <button onclick="handelProductChange ('case', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
                            <input id="case-count" type="text" class="form-control text-center" value="1">
-                           <button onclick="handelProductChange (true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="handelProductChange ('case', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
                         <h5 id="case-total">$59</h5>
@@ -76,8 +76,51 @@
             </div>
          </div>
       </div>
-      <script> 
-      /*document.getElementById('phone-increase').addEventListener('click', function(){
+
+      
+      <script type="text/javascript"> 
+
+      // 1 part + 2 part
+
+
+      function handelProductChange (product,IsIncrease){
+         const productInput = document.getElementById(product + '-count');
+         const productCount = parseInt(productInput.value);
+         //const caseNewCount = caseCount - 1;
+         let productNewCount = productCount;
+         if (IsIncrease == true){
+            productNewCount = productCount + 1;
+      
+         }
+         if (IsIncrease == false && productCount > 0){
+            productNewCount = productCount - 1;
+      
+         }
+         //const caseTotal = caseNewCount * 59;
+         let productTotal = 0;
+         if (product == 'phone'){
+            productTotal = productNewCount * 1219;
+         }
+            if (product == 'case'){
+            productTotal = productNewCount * 59;
+         }
+         
+         document.getElementById(product + '-total').innerText ='$' + productTotal;
+         document.getElementById(product + '-count').value =productNewCount;
+
+
+
+      }
+
+
+
+
+
+// 2 part
+
+      /* 
+      
+      document.getElementById('phone-increase').addEventListener('click', function(){
          const phoneInput = document.getElementById('phone-count');
          const phoneCount = parseInt(phoneInput.value);
          const phoneNewCount = phoneCount + 1;
@@ -93,15 +136,21 @@
          const phoneTotal = phoneNewCount * 1219;
          document.getElementById('phone-total').innerText ='$' + phoneTotal;
 
-      }); */
-      /*onclick
+
+// 2 part prothom onsho
+      });
+
+
       document.getElementById('phone-increase').addEventListener('click', function(){
          handelPhoneChange (true);
       
       });
       document.getElementById('phone-decrease').addEventListener('click', function(){
          handelPhoneChange (false); 
-      }) */
+      })
+
+
+      //2 part thaka payaci (2+)
 
       function handelPhoneChange (IsIncrease){
          const phoneInput = document.getElementById('phone-count');
@@ -124,20 +173,21 @@
 
       }
 
+// 1 part prothom ongso
 
 
-
-
-
-/*
       document.getElementById('case-increase').addEventListener('click', function(){
          handelProductChange (true);
       
       });
       document.getElementById('case-decrease').addEventListener('click', function(){
          handelProductChange (false);
-      }) */
+      }) 
+
+
+      // 1 part thaka paici (1+)
       
+
       function handelProductChange (IsIncrease){
          const caseInput = document.getElementById('case-count');
          const caseCount = parseInt(caseInput.value);
@@ -155,17 +205,13 @@
          const caseTotal = caseNewCount * 59;
          document.getElementById('case-total').innerText ='$' + caseTotal;
 
-
-
       }
 
 
+//first part
 
-
-
-
-
-      /*document.getElementById('case-increase').addEventListener('click', function(){
+      
+      document.getElementById('case-increase').addEventListener('click', function(){
          const caseInput = document.getElementById('case-count');
          const caseCount = parseInt(caseInput.value);
          const caseNewCount = caseCount + 1;
@@ -183,7 +229,7 @@
 
       }) */
       
-      </script>
+   </script>
    </section>
 </body>
 
